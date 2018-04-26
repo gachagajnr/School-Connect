@@ -10,9 +10,12 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.example.eduh_mik.schoolconnect.R;
 import com.example.eduh_mik.schoolconnect.adapters.MainPagerAdapter;
@@ -110,7 +113,11 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         if (id == R.id.nav_account) {
             startNewActivity(AccountProfileActivity.class);
         }else if(id == R.id.nav_schools){
-            startNewActivity(SchoolsActivity.class);
+//            startNewActivity(SchoolsActivity.class);
+            showdialog();
+        }else if(id == R.id.nav_about){
+           startNewActivity(AboutUs.class);
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -122,4 +129,20 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     public void onFragmentInteraction(Uri uri) {
 
     }
+    private void showdialog() {
+
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.activity_schools, null);
+        dialogBuilder.setView(dialogView);
+
+
+        final AlertDialog b = dialogBuilder.create();
+        b.show();
+
+
+
+    }
+
+
 }

@@ -46,8 +46,8 @@ public class AccountProfileActivity extends BaseActivity {
     ImageView ivProfileImage;
     @BindView(R.id.et_phone_number)
     EditText etPhoneNumber;
-    @BindView(R.id.fab)
-    FloatingActionButton fab;
+   // @BindView(R.id.fab)
+//    FloatingActionButton fab;
     @BindView(R.id.info_2)
     CardView info2;
     @BindView(R.id.edit)
@@ -55,32 +55,32 @@ public class AccountProfileActivity extends BaseActivity {
 
 
 
-    public void validate() {
-        String email = etEmail.getText().toString().trim();
-        String firstName = etFirstName.getText().toString().trim();
-        String lastName = etLastName.getText().toString().trim();
-        String phoneNumber = etPhoneNumber.getText().toString().trim();
-        if (TextUtils.isEmpty(email)) {
-            etEmail.requestFocus();
-            etEmail.setError("Email cannot be empty");
-        } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            etEmail.requestFocus();
-            etEmail.setError("Invalid email");
-        } else if (TextUtils.isEmpty(firstName)) {
-            etFirstName.requestFocus();
-            etFirstName.setError("First name cannot be empty");
-        } else if (TextUtils.isEmpty(lastName)) {
-            etLastName.requestFocus();
-            etLastName.setError("Last name cannot be empty");
-        } else if (TextUtils.isEmpty(phoneNumber)) {
-            etPhoneNumber.requestFocus();
-            etPhoneNumber.setError("Last name cannot be empty");
-        } else {
-            register(email, firstName, lastName);
-        }
-    }
-
-    public void register(String email, String firstName, String lastName) {
+//    public void validate() {
+//        String email = etEmail.getText().toString().trim();
+//        String firstName = etFirstName.getText().toString().trim();
+//        String lastName = etLastName.getText().toString().trim();
+//        String phoneNumber = etPhoneNumber.getText().toString().trim();
+//        if (TextUtils.isEmpty(email)) {
+//            etEmail.requestFocus();
+//            etEmail.setError("Email cannot be empty");
+//        } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+//            etEmail.requestFocus();
+//            etEmail.setError("Invalid email");
+//        } else if (TextUtils.isEmpty(firstName)) {
+//            etFirstName.requestFocus();
+//            etFirstName.setError("First name cannot be empty");
+//        } else if (TextUtils.isEmpty(lastName)) {
+//            etLastName.requestFocus();
+//            etLastName.setError("Last name cannot be empty");
+//        } else if (TextUtils.isEmpty(phoneNumber)) {
+//            etPhoneNumber.requestFocus();
+//            etPhoneNumber.setError("Last name cannot be empty");
+//        } else {
+//            register(email, firstName, lastName);
+//        }
+//    }
+//
+   public void register(String email, String firstName, String lastName) {
         showSweetDialog("Edit Profile", "Saving Profile. Please wait...", SweetAlertDialog.PROGRESS_TYPE);
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -106,63 +106,64 @@ public class AccountProfileActivity extends BaseActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle("Edit Profile");
         ButterKnife.bind(this);
-        final ArrayList<String> list = new ArrayList<String>();
-
-        final ArrayAdapter<String> adapter;
-        ListView listView = (ListView) findViewById(R.id.simple_listView);
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, list);
-        listView.setAdapter(adapter);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(AccountProfileActivity.this);
-                final android.app.AlertDialog alertDialog;
-                view = LayoutInflater.from(AccountProfileActivity.this).inflate(R.layout.dialog, null);
-                Spinner spinner = (Spinner) view.findViewById(R.id.simple_spinner_class);
-                ArrayAdapter<CharSequence> spinnerArrayAdapter = new ArrayAdapter<CharSequence>
-                        (AccountProfileActivity.this, android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.classes));
-                spinner.setAdapter(spinnerArrayAdapter);
-                builder.setView(view);
-                builder.setTitle("Add Child");
-                final EditText editText = (EditText) view.findViewById(R.id.editfull);
-                final EditText etName = (EditText) view.findViewById(R.id.etSurname);
-                builder.setPositiveButton("Accept", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                });
-                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-
-                alertDialog = builder.create();
-                alertDialog.show();
-
-                alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        final String oldPass = editText.getText().toString();
-                        final String newPass = etName.getText().toString();
-                        list.add(oldPass);
-                        list.add(newPass);
-                        adapter.notifyDataSetChanged();
-                        if (TextUtils.isEmpty(oldPass)) {
-                            editText.requestFocus();
-                            editText.setError("Full name cannot be empty");
-                        } else if (TextUtils.isEmpty(newPass)) {
-                            etName.requestFocus();
-                            etName.setError("Surname cannot be empty");
-                        } else {
-                            alertDialog.dismiss();
-                        }
-                    }
-                });
-            }
-        });
+//        final ArrayList<String> list = new ArrayList<String>();
+//
+//        final ArrayAdapter<String> adapter;
+//       // ListView listView = (ListView) findViewById(R.id.simple_listView);
+//        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, list);
+       // listView.setAdapter(adapter);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                final android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(AccountProfileActivity.this);
+//                final android.app.AlertDialog alertDialog;
+//                view = LayoutInflater.from(AccountProfileActivity.this).inflate(R.layout.dialog, null);
+//                Spinner spinner = (Spinner) view.findViewById(R.id.simple_spinner_class);
+//                ArrayAdapter<CharSequence> spinnerArrayAdapter = new ArrayAdapter<CharSequence>
+//                        (AccountProfileActivity.this, android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.classes));
+//                spinner.setAdapter(spinnerArrayAdapter);
+//                builder.setView(view);
+//                builder.setTitle("Add Child");
+//                final EditText editText = (EditText) view.findViewById(R.id.editfull);
+//                final EditText etName = (EditText) view.findViewById(R.id.etSurname);
+//                builder.setPositiveButton("Accept", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//
+//                    }
+//                });
+//                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        dialog.dismiss();
+//                    }
+//                });
+//                *
+//
+//                alertDialog = builder.create();
+//                alertDialog.show();
+//
+//                alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        final String oldPass = editText.getText().toString();
+//                        final String newPass = etName.getText().toString();
+//                        list.add(oldPass);
+//                        list.add(newPass);
+//                        adapter.notifyDataSetChanged();
+//                        if (TextUtils.isEmpty(oldPass)) {
+//                            editText.requestFocus();
+//                            editText.setError("Full name cannot be empty");
+//                        } else if (TextUtils.isEmpty(newPass)) {
+//                            etName.requestFocus();
+//                            etName.setError("Surname cannot be empty");
+//                        } else {
+//                            alertDialog.dismiss();
+//                        }
+//                    }
+//                });
+//            }
+//        });
 
 
     }
@@ -195,7 +196,7 @@ public class AccountProfileActivity extends BaseActivity {
 
     @OnClick(R.id.edit)
     public void onViewClicked() {
-        validate();
+       // validate();
         Toast.makeText(getApplicationContext(), "Updated Information Successfully!",Toast.LENGTH_SHORT).show();
     }
 }

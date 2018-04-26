@@ -32,6 +32,16 @@
         <item> Ryan Kenn </item>
         <item> Sandy Betty </item>
     </string-array>
+    <string-array name="schools">
+        <item> Select An Option: </item>
+        <item> SCHOOL 1</item>
+        <item> SCHOOL 2</item>
+        <item> SCHOOL 3 </item>
+        <item> SCHOOL 4 </item>
+        <item> SCHOOL 5 </item>
+        <item> SCHOOL 6 </item>
+
+    </string-array>
 
     <string-array name="child">
         <item> For All Students </item>
